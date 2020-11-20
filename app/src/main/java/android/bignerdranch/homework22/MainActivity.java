@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import org.json.JSONArray;
@@ -13,6 +15,7 @@ import org.json.JSONObject;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -22,7 +25,12 @@ public class MainActivity extends AppCompatActivity {
     Adapter adapter;
     ArrayList<String> items;
 
-    String name, job, office, email, phone, image;
+    String name;
+    String job;
+    String office;
+    String email;
+    String phone;
+    int image;
 
     class Faculty
 
@@ -37,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
         public String phone;
 
-        public String image;
+        public int image;
 
 
     }
@@ -62,12 +70,10 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         ArrayList<Faculty> employees = new ArrayList<>();
        // Map<String, String> map = new HashMap<String, String>();
@@ -85,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
                 office = employee.getString("Office");
                 email = employee.getString("Email");
                 phone = employee.getString("phonenumber");
-                image = employee.getString("image");
+                image = employee.getInt("image");
 
                 Faculty faculty = new Faculty();
                 faculty.name = name;
@@ -94,17 +100,8 @@ public class MainActivity extends AppCompatActivity {
                 faculty.email= email;
                 faculty.phone = phone;
                 faculty.image = image;
+
                 employees.add(faculty);
-
-
-                //employees.add(name);
-               // employees.add(job);
-               // employees.add(office);
-               // employees.add(email);
-               // employees.add(phone);
-               // employees.add(image);
-                // set employee name and job in TextView's
-
 
 
             }

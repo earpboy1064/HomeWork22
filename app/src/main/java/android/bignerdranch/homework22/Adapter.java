@@ -1,6 +1,10 @@
 package android.bignerdranch.homework22;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -49,7 +53,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
         public String phone;
 
-        public String image;
+        public int image;
 
 
     }
@@ -83,19 +87,17 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         String office = data.get(i).office;
         String phone = data.get(i).phone;
         String email = data.get(i).email;
-        String image = data.get(i).image;
+        int image = data.get(i).image;
 
-       // String[] images = {"curtiss","gamerson", "ppape", "sdinc", "zgao","lwu" };
-       // String[] names = {"curtiss","gamerson", "ppape", "sdinc", "zgao","lwu" };
-        // String value = images[i];
         viewHolder.textTitle.setText(title);
         viewHolder.textDescription.setText(desc);
         viewHolder.textOffice.setText(office);
         viewHolder.textPhone.setText(phone);
         viewHolder.textEmail.setText(email);
 
+        //Testing *************************************
         try {
-            viewHolder.mImageView.setImageResource(R.drawable.zgao);
+            viewHolder.mImageView.setImageResource(image);
         }
         catch(Exception e)
         {
