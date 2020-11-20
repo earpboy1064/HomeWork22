@@ -14,6 +14,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     RecyclerView mRecyclerView;
@@ -22,6 +24,23 @@ public class MainActivity extends AppCompatActivity {
 
     String name, job, office, email, phone, image;
 
+    class Faculty
+
+    {
+        public String name;
+
+        public String job;
+
+        public String office;
+
+        public String email;
+
+        public String phone;
+
+        public String image;
+
+
+    }
 
 
 
@@ -44,14 +63,15 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
 
-        ArrayList<String> employees = new ArrayList<>();
+        ArrayList<Faculty> employees = new ArrayList<>();
+       // Map<String, String> map = new HashMap<String, String>();
+
         String Json = loadJSONFromAsset();
         try {
             // get JSONObject from JSON file
@@ -66,13 +86,27 @@ public class MainActivity extends AppCompatActivity {
                 email = employee.getString("Email");
                 phone = employee.getString("phonenumber");
                 image = employee.getString("image");
-                employees.add(name);
-                employees.add(job);
-                employees.add(office);
-                employees.add(email);
-                employees.add(phone);
-                employees.add(image);
+
+                Faculty faculty = new Faculty();
+                faculty.name = name;
+                faculty.job = job;
+                faculty.office = office;
+                faculty.email= email;
+                faculty.phone = phone;
+                faculty.image = image;
+                employees.add(faculty);
+
+
+                //employees.add(name);
+               // employees.add(job);
+               // employees.add(office);
+               // employees.add(email);
+               // employees.add(phone);
+               // employees.add(image);
                 // set employee name and job in TextView's
+
+
+
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -86,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
+/***
         items = new ArrayList<>();
 
         items.add(name);
@@ -111,6 +145,20 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         mRecyclerView.setAdapter(adapter);
+ ***/
+        mRecyclerView = findViewById(R.id.recyclerView);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        try {
+            adapter = new Adapter(this, employees);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        mRecyclerView.setAdapter(adapter);
+
+
+
+
+
 
 
     }
