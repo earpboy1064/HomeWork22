@@ -1,4 +1,4 @@
-{ "Faculty":[
+[
         
     {"name": "Lee Wu", "Job": "Department Chair / Professor","Office": "310Q Goodwyn Hall","Email": "lwu@aum.edu","phonenumber": "334-244-3862","image":"lwu.png"},
     {"name": "Kennedy Quick Smith", "Job": "Asministrative Associate","Office": "125 Goodwyn Hall","Email": "kquick@aum.edu","phonenumber": "334-394-5338","image":"curtiss.png"},
@@ -8,4 +8,4 @@
     {"name": "Zhimin (Kelvin) Gao", "Job": "Assistant Professor","Office": "310S Goodwyn Hall","Email": "zgao1@aum.edu","phonenumber": "334-244-3320","image":"zgao.png"},
     {"name": "Patrick Pape", "Job": "Assistant Professor","Office": "213E Goodwyn Hall","Email": "ppape@aum.edu","phonenumber": "334-244-3314","image":"ppape.png"},
     {"name": "Hua (Sophia) Yan", "Job": "Lecturer","Office": "207 Goodwyn Hall","Email": "hyan@aum.edu","phonenumber": "0","image":"curtiss.png"}
-]}
+]

@@ -19,6 +19,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
@@ -34,9 +35,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     String name, salary;
 
 
-
-
-
     //** done playing with json
 
     Adapter(Context context, List<String> data) throws FileNotFoundException {
@@ -48,10 +46,13 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup ViewGroup, int i) {
         View view = layoutInflater.inflate(R.layout.custom_view,ViewGroup, false);
-
-
         return new ViewHolder(view);
     }
+
+
+
+
+
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
@@ -59,27 +60,15 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         //bind the textview with data received
 
         String title = data.get(i);
-        String desc = data.get(i+1);
+        String desc = data.get(i);
 
-        try {
-            // get JSONObject from JSON file
-            JSONObject obj = new JSONObject(JSON_STRING);
-            // fetch JSONObject named employee
-            JSONObject employee = obj.getJSONObject("employee");
-            // get employee name and salary
-            name = employee.getString("name");
-            salary = employee.getString("salary");
+        String[] images = {"curtiss","gamerson", "ppape", "sdinc", "zgao","lwu" };
+        String[] names = {"curtiss","gamerson", "ppape", "sdinc", "zgao","lwu" };
+        String value = images[i];
+        viewHolder.textTitle.setText(title);
+        viewHolder.textDescription.setText(desc);
+        viewHolder.mImageView.setImageResource(R.drawable.gamerson);
 
-            // set employee name and salary in TextView's
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-
-        viewHolder.textTitle.setText(name);
-        viewHolder.textDescription.setText(salary);
-       // viewHolder.imageView.setImageResource(R.drawable.gamerson);
     }
 
     @Override
@@ -90,12 +79,12 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView textTitle,textDescription;
-        ImageView imageView;
+        ImageView mImageView;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-           // imageView = (imageView).findViewById(R.id.imageView);
             textTitle = itemView.findViewById(R.id.textTitle);
             textDescription = itemView.findViewById(R.id.textDesc);
+            mImageView = itemView.findViewById(R.id.imageView);
         }
     }
 }
